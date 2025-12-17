@@ -1193,6 +1193,7 @@
             </div>
         </div>
     </section>
+    
         <!-- Screen Care Product Section -->
     <section class="product" id="product" style="background-color: white;">
         <div class="container">
@@ -1304,6 +1305,528 @@
             </div>
         </div>
     </section>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema Cosmetics - Virtual Makeup Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff0f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Makeup Controls */
+        .makeup-controls {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: #ff6b8b;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffe8e8;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        input[type="range"] {
+            flex-grow: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #ffe8e8;
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #ff6b8b;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: transform 0.2s;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.active {
+            border-color: #333;
+            transform: scale(1.1);
+        }
+        
+        /* Face Display */
+        .face-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .face-canvas {
+            width: 300px;
+            height: 300px;
+            background: #ffe8cc;
+            border-radius: 50%;
+            position: relative;
+            margin-bottom: 20px;
+            border: 10px solid #ffd9b3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Product List */
+        .products {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            grid-column: 1 / -1;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-color {
+            width: 100%;
+            height: 60px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        button {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="main-content">
+            <section class="makeup-controls">
+                <h2>Makeup Control Panel</h2>
+                
+                <div class="control-group">
+                    <label>Lip Color Intensity</label>
+                    <div class="slider-container">
+                        <span>Light</span>
+                        <input type="range" id="lip-intensity" min="0" max="100" value="50">
+                        <span>Bold</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Select Lip Color</label>
+                    <div class="color-palette" id="lip-colors">
+                        <!-- Color options added by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Cheek Blush Intensity</label>
+                    <div class="slider-container">
+                        <span>Light</span>
+                        <input type="range" id="cheek-intensity" min="0" max="100" value="30">
+                        <span>Heavy</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Eyeshadow Color</label>
+                    <div class="color-palette" id="eyes-colors">
+                        <!-- Color options added by JavaScript -->
+                    </div>
+                </div>
+                
+                <button id="reset-btn">Reset All</button>
+                <button id="random-btn">Random Makeup</button>
+            </section>
+            
+            <section class="face-container">
+                <h2>Your Virtual Face</h2>
+                <div class="face-canvas" id="face-canvas">
+                    <!-- Face features created with CSS pseudo-elements -->
+                </div>
+                <button id="save-btn">Save Screenshot</button>
+            </section>
+        </div>
+        
+        <section class="products">
+            <h2>Recommended Cosmetics</h2>
+            <div class="product-grid" id="product-list">
+                <!-- Products added by JavaScript -->
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 Tema Cosmetics - Code Makeup Project</p>
+            <p>This page is a demo created with HTML/CSS/JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        // Color palette data
+        const lipColors = [
+            { name: "Classic Red", hex: "#c93737" },
+            { name: "Pink Peach", hex: "#ff7b9c" },
+            { name: "Coral Orange", hex: "#ff7f50" },
+            { name: "Berry Velvet", hex: "#8b0000" },
+            { name: "Nude Beige", hex: "#d2b48c" },
+            { name: "Mauve Magic", hex: "#9370db" }
+        ];
+        
+        const eyeColors = [
+            { name: "Champagne Gold", hex: "#ffd700" },
+            { name: "Rose Quartz", hex: "#f7cac9" },
+            { name: "Mint Green", hex: "#98ff98" },
+            { name: "Blue Moon", hex: "#1e90ff" },
+            { name: "Smoky Brown", hex: "#8b4513" },
+            { name: "Lavender Mist", hex: "#e6e6fa" }
+        ];
+        
+        // Product data
+        const products = [
+            { name: "Liquid Lipstick", brand: "Tema", color: "#c93737", price: "$25" },
+            { name: "Cheek Gel Blush", brand: "Tema", color: "#ff7b9c", price: "$18" },
+            { name: "Eyeshadow Palette", brand: "Tema", color: "#9370db", price: "$42" },
+            { name: "Face Highlighter", brand: "Tema", color: "#ffd700", price: "$28" }
+        ];
+        
+        // Currently selected colors
+        let currentLipColor = lipColors[0].hex;
+        let currentEyeColor = eyeColors[0].hex;
+        
+        // DOM elements
+        const lipColorsContainer = document.getElementById('lip-colors');
+        const eyeColorsContainer = document.getElementById('eyes-colors');
+        const productListContainer = document.getElementById('product-list');
+        const faceCanvas = document.getElementById('face-canvas');
+        const resetBtn = document.getElementById('reset-btn');
+        const randomBtn = document.getElementById('random-btn');
+        const saveBtn = document.getElementById('save-btn');
+        
+        // Generate lip color options
+        lipColors.forEach((color, index) => {
+            const colorDiv = document.createElement('div');
+            colorDiv.className = 'color-option';
+            if (index === 0) colorDiv.classList.add('active');
+            colorDiv.style.backgroundColor = color.hex;
+            colorDiv.dataset.color = color.hex;
+            colorDiv.title = color.name;
+            
+            colorDiv.addEventListener('click', () => {
+                // Remove active class from all
+                document.querySelectorAll('#lip-colors .color-option').forEach(el => {
+                    el.classList.remove('active');
+                });
+                // Set clicked color as active
+                colorDiv.classList.add('active');
+                currentLipColor = color.hex;
+                updateFace();
+            });
+            
+            lipColorsContainer.appendChild(colorDiv);
+        });
+        
+        // Generate eyeshadow color options
+        eyeColors.forEach((color, index) => {
+            const colorDiv = document.createElement('div');
+            colorDiv.className = 'color-option';
+            if (index === 0) colorDiv.classList.add('active');
+            colorDiv.style.backgroundColor = color.hex;
+            colorDiv.dataset.color = color.hex;
+            colorDiv.title = color.name;
+            
+            colorDiv.addEventListener('click', () => {
+                // Remove active class from all
+                document.querySelectorAll('#eyes-colors .color-option').forEach(el => {
+                    el.classList.remove('active');
+                });
+                // Set clicked color as active
+                colorDiv.classList.add('active');
+                currentEyeColor = color.hex;
+                updateFace();
+            });
+            
+            eyeColorsContainer.appendChild(colorDiv);
+        });
+        
+        // Generate product list
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            
+            productCard.innerHTML = `
+                <div class="product-color" style="background-color: ${product.color};"></div>
+                <h3>${product.name}</h3>
+                <p><strong>Brand:</strong> ${product.brand}</p>
+                <p><strong>Price:</strong> ${product.price}</p>
+                <button onclick="alert('${product.name} added to cart')">Add to Cart</button>
+            `;
+            
+            productListContainer.appendChild(productCard);
+        });
+        
+        // Face update function
+        function updateFace() {
+            const lipIntensity = document.getElementById('lip-intensity').value;
+            const cheekIntensity = document.getElementById('cheek-intensity').value;
+            
+            // Update face styles
+            faceCanvas.style.cssText = `
+                width: 300px;
+                height: 300px;
+                background: #ffe8cc;
+                border-radius: 50%;
+                position: relative;
+                margin-bottom: 20px;
+                border: 10px solid #ffd9b3;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                --lip-color: ${currentLipColor};
+                --lip-opacity: ${lipIntensity / 100};
+                --cheek-opacity: ${cheekIntensity / 100};
+                --eye-color: ${currentEyeColor};
+            `;
+            
+            // Control pseudo-elements with CSS variables
+            faceCanvas.style.setProperty('--lip-color', currentLipColor);
+            faceCanvas.style.setProperty('--lip-opacity', lipIntensity / 100);
+            faceCanvas.style.setProperty('--cheek-opacity', cheekIntensity / 100);
+            faceCanvas.style.setProperty('--eye-color', currentEyeColor);
+            
+            // Dynamically add CSS for pseudo-elements
+            const style = document.createElement('style');
+            style.innerHTML = `
+                #face-canvas::before {
+                    content: '';
+                    position: absolute;
+                    width: 80px;
+                    height: 40px;
+                    background-color: var(--lip-color);
+                    opacity: var(--lip-opacity);
+                    border-radius: 50%;
+                    bottom: 70px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                }
+                
+                #face-canvas::after {
+                    content: '';
+                    position: absolute;
+                    width: 150px;
+                    height: 80px;
+                    background: radial-gradient(circle, var(--eye-color) 10%, transparent 70%);
+                    opacity: 0.7;
+                    top: 80px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                
+                /* Cheek representation */
+                #face-canvas .cheek {
+                    position: absolute;
+                    width: 50px;
+                    height: 30px;
+                    background-color: #ffb6c1;
+                    opacity: var(--cheek-opacity);
+                    border-radius: 50%;
+                    top: 140px;
+                }
+                
+                #face-canvas .cheek.left {
+                    left: 60px;
+                }
+                
+                #face-canvas .cheek.right {
+                    right: 60px;
+                }
+            `;
+            
+            // Remove existing style and add new one
+            const existingStyle = document.querySelector('#face-canvas-style');
+            if (existingStyle) existingStyle.remove();
+            
+            style.id = 'face-canvas-style';
+            document.head.appendChild(style);
+            
+            // Add cheek elements if they don't exist
+            if (!document.querySelector('.cheek')) {
+                const leftCheek = document.createElement('div');
+                leftCheek.className = 'cheek left';
+                const rightCheek = document.createElement('div');
+                rightCheek.className = 'cheek right';
+                faceCanvas.appendChild(leftCheek);
+                faceCanvas.appendChild(rightCheek);
+            }
+        }
+        
+        // Slider change events
+        document.getElementById('lip-intensity').addEventListener('input', updateFace);
+        document.getElementById('cheek-intensity').addEventListener('input', updateFace);
+        
+        // Reset button
+        resetBtn.addEventListener('click', () => {
+            document.getElementById('lip-intensity').value = 50;
+            document.getElementById('cheek-intensity').value = 30;
+            
+            // Select first colors
+            document.querySelectorAll('#lip-colors .color-option')[0].click();
+            document.querySelectorAll('#eyes-colors .color-option')[0].click();
+            
+            updateFace();
+        });
+        
+        // Random button
+        randomBtn.addEventListener('click', () => {
+            // Set random values
+            document.getElementById('lip-intensity').value = Math.floor(Math.random() * 100);
+            document.getElementById('cheek-intensity').value = Math.floor(Math.random() * 100);
+            
+            // Select random colors
+            const randomLipIndex = Math.floor(Math.random() * lipColors.length);
+            const randomEyeIndex = Math.floor(Math.random() * eyeColors.length);
+            
+            document.querySelectorAll('#lip-colors .color-option')[randomLipIndex].click();
+            document.querySelectorAll('#eyes-colors .color-option')[randomEyeIndex].click();
+            
+            updateFace();
+        });
+        
+        // Screenshot save button (simplified)
+        saveBtn.addEventListener('click', () => {
+            alert('To implement this feature, additional libraries like html2canvas are required.\nThis demo only shows an alert.');
+        });
+        
+        // Initialization
+        updateFace();
+    </script>
+</body>
+</html>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
